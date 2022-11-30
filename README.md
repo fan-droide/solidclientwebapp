@@ -7,3 +7,5 @@ The purpose is to illustrate how it is possible to connect a simple web app, con
 - Live Demo of the Client: https://solidwebapp-7a3cf.web.app/
 
 - Live Demo of the Server: https://warm-inlet-30289.herokuapp.com/
+
+NOTE: It is required to open the web browser console to check the result of the query
