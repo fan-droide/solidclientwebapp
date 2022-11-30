@@ -13,15 +13,15 @@ async function init() {
 
   try {
 
-      myReadingList = await getSolidDataset(SOLID_IDENTITY_PROVIDER, { fetch: fetch });
-      console.log(myReadingList)
+    myReadingList = await getSolidDataset(SOLID_IDENTITY_PROVIDER, { fetch: fetch });
+    console.log(myReadingList)
 
   } catch (error) {
-      if (typeof error.statusCode === "number" && error.statusCode === 404) {            
-          console.error(error);            
-      } else {
-          console.error(error.message);
-      }
+    if (typeof error.statusCode === "number" && error.statusCode === 404) {
+      console.error(error);
+    } else {
+      console.error(error.message);
+    }
   }
 }
 

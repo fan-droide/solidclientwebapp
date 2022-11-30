@@ -11,13 +11,13 @@ async function init() {
     let myReadingList;
 
     try {
-  
+
         myReadingList = await getSolidDataset(SOLID_IDENTITY_PROVIDER, { fetch: fetch });
         console.log(myReadingList)
 
     } catch (error) {
-        if (typeof error.statusCode === "number" && error.statusCode === 404) {            
-            console.error(error);            
+        if (typeof error.statusCode === "number" && error.statusCode === 404) {
+            console.error(error);
         } else {
             console.error(error.message);
         }
