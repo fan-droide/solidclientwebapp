@@ -4,8 +4,9 @@ import {
 } from "@inrupt/solid-client";
 import { fetch } from "@inrupt/solid-client-authn-browser";
 
+const SOLID_IDENTITY_PROVIDER = "https://warm-inlet-30289.herokuapp.com/audio/"
 
-const SOLID_IDENTITY_PROVIDER = "http://localhost:3000/demopod1/";
+//const SOLID_IDENTITY_PROVIDER = "http://localhost:3000/demopod1/";
 
 async function init() {
     let myReadingList;
