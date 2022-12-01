@@ -9,3 +9,9 @@ The purpose is to illustrate how it is possible to connect a simple web app, con
 - Live Demo of the Server: https://warm-inlet-30289.herokuapp.com/
 
 NOTE: It is required to open the web browser console to check the result of the query
+
+## How to run it locally:
+1. ```git clone https://github.com/fan-droide/solidclientwebapp.git```
+2. ```cd solidclientwebapp```
+3. ```npm i```
+4. ```npm start```
