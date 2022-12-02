@@ -15,3 +15,7 @@ NOTE: It is required to open the web browser console to check the result of the 
 2. ```cd solidclientwebapp```
 3. ```npm i```
 4. ```npm start```
+
+## To-Do:
+- Login users
+- Upload file to a folder
