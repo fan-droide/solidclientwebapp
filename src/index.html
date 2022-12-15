@@ -6,6 +6,7 @@
   <title>My First Parcel App</title>
   <link rel="stylesheet" href="css/styles.css" />
   <script type="module" src="js/homepage.js"></script>
+  <script type="module" src="js/login.js"></script>
 </head>
 
 <body>
@@ -14,6 +15,15 @@
     <h2>Getting Started</h2>
     <h3>with Inrupt JavaScript Client Libraries</h3>
   </header>
+  <section id="login" class="panel">
+    <div class="row">
+      <label id="labelLogin" for="btnLogin">Click the button to log into
+        <span id="solid_identity_provider">...provided by the JavaScript code...</span>:
+      </label>
+      <button name="btnLogin" id="btnLogin">Login</button>
+      <p id="labelStatus" class="labelStatus"></p>
+    </div>
+  </section>
   <section class="panel">
     <div class="row">
       <ul id="my-ul"></ul>
