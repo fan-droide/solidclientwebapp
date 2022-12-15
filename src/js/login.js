@@ -7,9 +7,6 @@ document.getElementById(
     'solid_identity_provider'
 ).innerHTML = `[<a target='_blank' href='${SOLID_IDENTITY_PROVIDER}'>${SOLID_IDENTITY_PROVIDER}</a>]`
 
-const NOT_ENTERED_WEBID =
-    '...not logged in yet - but enter any WebID to read from its profile...'
-
 const session = new Session()
 
 const buttonLogin = document.getElementById('btnLogin')
