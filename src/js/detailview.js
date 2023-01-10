@@ -2,21 +2,32 @@ import {
     getSolidDataset,
     getContainedResourceUrlAll    
 } from "@inrupt/solid-client"
-import { fetch } from "@inrupt/solid-client-authn-browser"
+import { fetch, getDefaultSession} from "@inrupt/solid-client-authn-browser"
 import { RDF } from "@inrupt/vocab-common-rdf"
 
 const SOLID_IDENTITY_PROVIDER = "http://localhost:3000"
 
-async function init() {
+async function init() {    
     let queryString = window.location.search
     queryString = queryString.split('path=')[1]
+    let thePath =queryString
+    let sessionParam = queryString
+    sessionParam = sessionParam.split('session=')[1]
+    if(sessionParam){
+        thePath = queryString.slice(0, queryString.indexOf('&'))
+    }    
+    
+    const session = getDefaultSession()
+    
+    //const theSession = await session.clientAuthentication.validateCurrentSession(sessionParam)   
+
     let myReadingList
 
     try {
 
-        myReadingList = await getSolidDataset(SOLID_IDENTITY_PROVIDER + "/" + queryString + "/", { fetch: fetch })
+        myReadingList = await getSolidDataset(SOLID_IDENTITY_PROVIDER + "/" + thePath + "/", { fetch: session.fetch })
 
-        let items = getContainedResourceUrlAll(myReadingList, { fetch: fetch })
+        let items = getContainedResourceUrlAll(myReadingList, { fetch: session.fetch })
 
         for (let i = 0; i < items.length; i++) {
 
@@ -47,4 +58,4 @@ function paintPlayer(url) {
     document.getElementById('song').innerHTML = '<audio controls="controls" src="' + url + '">'
 
 }
-init() 
+init()

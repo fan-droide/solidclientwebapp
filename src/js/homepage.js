@@ -50,9 +50,10 @@ function paintList(listcontent) {
 
   const myUl = document.getElementById("my-ul")
 
-  for (let topping of listcontent) {
+  for (let topping of listcontent) {    
     const newLi = document.createElement("li")
     const newAnchor = document.createElement("a")
+    newAnchor.classList.add("linkResource")
     newAnchor.href = 'detailview.html' + "?path=" + topping
     newAnchor.textContent = topping
     newLi.appendChild(newAnchor)
