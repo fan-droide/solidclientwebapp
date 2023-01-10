@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="css/styles.css" />
   <script type="module" src="js/homepage.js"></script>
   <script type="module" src="js/login.js"></script>
+  <script type="module" src="js/upload.js"></script>  
 </head>
 
 <body>
@@ -20,7 +21,7 @@
       <label id="labelLogin" for="btnLogin">Click the button to log into
         <span id="solid_identity_provider">...provided by the JavaScript code...</span>:
       </label>
-      <button name="btnLogin" id="btnLogin">Login</button>
+      <button name="btnLogin" id="btnLogin">Redirect Login</button>
       <p id="labelStatus" class="labelStatus"></p>
     </div>
   </section>
@@ -28,6 +29,14 @@
     <div class="row">
       <ul id="my-ul"></ul>
     </div>
+  </section>
+  <section class="panel">
+    <form ref='uploadForm' id='uploadForm' method='post' encType="multipart/form-data" name="fileinfo">
+      <input type="email" placeholder="Username" name="uname" required>      
+      <input type="password" placeholder="Password" name="psw" required>
+      <input type="file" name="audiofile" />
+      <input type='submit' value='Upload!' />
+    </form>
   </section>
 </body>
 

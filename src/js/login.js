@@ -2,12 +2,13 @@
 import { Session } from '@inrupt/solid-client-authn-browser'
 
 // If your Pod is *not* on `solidcommunity.net`, change this to your identity provider.
-const SOLID_IDENTITY_PROVIDER = 'https://solidcommunity.net'
+const SOLID_IDENTITY_PROVIDER = 'http://localhost:3000/'
 document.getElementById(
     'solid_identity_provider'
 ).innerHTML = `[<a target='_blank' href='${SOLID_IDENTITY_PROVIDER}'>${SOLID_IDENTITY_PROVIDER}</a>]`
 
 const session = new Session()
+// export const session = new Session()
 
 const buttonLogin = document.getElementById('btnLogin')
 

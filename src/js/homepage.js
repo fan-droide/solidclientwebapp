@@ -9,7 +9,7 @@ import {
 } from "@inrupt/solid-client"
 import { fetch } from "@inrupt/solid-client-authn-browser"
 import { SCHEMA_INRUPT, RDF, AS } from "@inrupt/vocab-common-rdf"
-const SOLID_IDENTITY_PROVIDER = "https://warm-inlet-30289.herokuapp.com/"
+const SOLID_IDENTITY_PROVIDER = "http://localhost:3000/"
 
 async function init() {
   let myReadingList

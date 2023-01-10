@@ -5,7 +5,7 @@ import {
 import { fetch } from "@inrupt/solid-client-authn-browser"
 import { RDF } from "@inrupt/vocab-common-rdf"
 
-const SOLID_IDENTITY_PROVIDER = "https://warm-inlet-30289.herokuapp.com"
+const SOLID_IDENTITY_PROVIDER = "http://localhost:3000"
 
 async function init() {
     let queryString = window.location.search
