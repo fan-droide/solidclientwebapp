@@ -5,11 +5,8 @@
   <meta charset="utf-8" />
   <title>My First Parcel App</title>
   <link rel="stylesheet" href="css/styles.css" />
-  <script type="module" src="js/homepage.js"></script>
-  <script type="module" src="js/login.js"></script>
-  <script type="module" src="js/upload.js"></script>  
+  <script type="module" src="js/index.js"></script>
 </head>
-
 <body>
   <h1>Hello, World!</h1>
   <header>
@@ -25,19 +22,8 @@
       <p id="labelStatus" class="labelStatus"></p>
     </div>
   </section>
-  <section class="panel">
-    <div class="row">
-      <ul id="my-ul"></ul>
-    </div>
-  </section>
-  <section class="panel">
-    <form ref='uploadForm' id='uploadForm' method='post' encType="multipart/form-data" name="fileinfo">
-      <input type="email" placeholder="Username" name="uname" required>      
-      <input type="password" placeholder="Password" name="psw" required>
-      <input type="file" name="audiofile" />
-      <input type='submit' value='Upload!' />
-    </form>
+  <section id="navigateTo" class="panel">
+    <a href="detailview.html">Go To Detail</a>
   </section>
 </body>
-
 </html>

@@ -1,8 +1,8 @@
 /* SOURCE: https://solidproject.org/developers/tutorials/first-app */
-import { Session, getDefaultSession, onSessionRestore } from '@inrupt/solid-client-authn-browser'
+import { Session, onSessionRestore } from '@inrupt/solid-client-authn-browser'
 
 // If your Pod is *not* on `solidcommunity.net`, change this to your identity provider.
-const SOLID_IDENTITY_PROVIDER = 'http://localhost:3000/'
+const SOLID_IDENTITY_PROVIDER = 'https://solidcommunity.net'
 document.getElementById(
     'solid_identity_provider'
 ).innerHTML = `[<a target='_blank' href='${SOLID_IDENTITY_PROVIDER}'>${SOLID_IDENTITY_PROVIDER}</a>]`
@@ -10,6 +10,9 @@ document.getElementById(
 const session =  new Session()
 
 const buttonLogin = document.getElementById('btnLogin')
+buttonLogin.onclick = function () {
+    login()
+}
 
 // 1a. Start Login Process. Call session.login() function.
 async function login() {
@@ -26,9 +29,10 @@ async function login() {
 // When redirected after login, finish the process by retrieving session information.
 async function handleRedirectAfterLogin() {    
     await session.handleIncomingRedirect({
-        restorePreviousSession: false
+        restorePreviousSession: true
       })
-    if (session.info.isLoggedIn) {       
+    if (session.info.isLoggedIn) { 
+        console.log(session)      
         // Update the page with the status.
         document.getElementById(
             'labelStatus'
@@ -41,14 +45,5 @@ async function handleRedirectAfterLogin() {
 // This calls the function to process login information.
 // If the function is called when not part of the login redirect, the function is a no-op.
 handleRedirectAfterLogin()
-onSessionRestore((url)=>{    
-    const linksRscrs = document.getElementsByClassName('linkResource');        
-    for (let link of linksRscrs){
-        let hrefIs = link.getAttribute('href')        
-        hrefIs += '&session=' + session.info.sessionId
-        link.setAttribute('href', hrefIs)
-    }
-})
-buttonLogin.onclick = function () {
-    login()
-}
+
+

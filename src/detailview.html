@@ -5,18 +5,20 @@
   <meta charset="utf-8" />
   <title>My First Parcel App</title>
   <link rel="stylesheet" href="css/styles.css" />
-
+  <script type="module" src="js/detailview.js"></script>
 </head>
 
 <body>
   <h1>Detail View</h1>
-  <section class="panel">
+  <section id="detail" class="panel">
     <div class="row">
-      <div id="song"></div>
+      <label id="labelLogin" for="btnLogin">Your session is logged in with the WebID:</label>
+      <p id="labelStatus" class="labelStatus"></p>
     </div>
   </section>
-  <a href="index.html">Back Home</a>
-  <script type="module" src="js/detailview.js"></script>
+  <section id="navigateTo" class="panel">
+    <a href="/">Back Home</a>
+  </section>  
 </body>
 
 </html>
