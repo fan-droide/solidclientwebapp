@@ -7,7 +7,7 @@ document.getElementById(
     'solid_identity_provider'
 ).innerHTML = `[<a target='_blank' href='${SOLID_IDENTITY_PROVIDER}'>${SOLID_IDENTITY_PROVIDER}</a>]`
 
-const session =  getDefaultSession()
+const session =  new Session()
 
 const buttonLogin = document.getElementById('btnLogin')
 
@@ -26,7 +26,7 @@ async function login() {
 // When redirected after login, finish the process by retrieving session information.
 async function handleRedirectAfterLogin() {    
     await session.handleIncomingRedirect({
-        restorePreviousSession: true
+        restorePreviousSession: false
       })
     if (session.info.isLoggedIn) {       
         // Update the page with the status.
