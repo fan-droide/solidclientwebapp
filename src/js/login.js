@@ -1,8 +1,8 @@
 /* SOURCE: https://solidproject.org/developers/tutorials/first-app */
+import {SOLID_IDENTITY_PROVIDER} from './config.js'
 import { Session, getDefaultSession, onSessionRestore } from '@inrupt/solid-client-authn-browser'
 
 // If your Pod is *not* on `solidcommunity.net`, change this to your identity provider.
-const SOLID_IDENTITY_PROVIDER = 'http://localhost:3000/'
 document.getElementById(
     'solid_identity_provider'
 ).innerHTML = `[<a target='_blank' href='${SOLID_IDENTITY_PROVIDER}'>${SOLID_IDENTITY_PROVIDER}</a>]`

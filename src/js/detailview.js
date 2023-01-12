@@ -4,8 +4,7 @@ import {
 } from "@inrupt/solid-client"
 import { fetch, getDefaultSession} from "@inrupt/solid-client-authn-browser"
 import { RDF } from "@inrupt/vocab-common-rdf"
-
-const SOLID_IDENTITY_PROVIDER = "http://localhost:3000"
+import {SOLID_IDENTITY_PROVIDER} from './config.js'
 
 async function init() {    
     let queryString = window.location.search

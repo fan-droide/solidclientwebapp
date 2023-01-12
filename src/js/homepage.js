@@ -1,5 +1,5 @@
 /* https://docs.inrupt.com/developer-tools/javascript/client-libraries/tutorial/getting-started/ */
-
+import {SOLID_IDENTITY_PROVIDER} from './config.js'
 import {
   getSolidDataset,
   getThing,
@@ -9,13 +9,12 @@ import {
 } from "@inrupt/solid-client"
 import { fetch } from "@inrupt/solid-client-authn-browser"
 import { SCHEMA_INRUPT, RDF, AS } from "@inrupt/vocab-common-rdf"
-const SOLID_IDENTITY_PROVIDER = "http://localhost:3000/"
 
 async function init() {
   let myReadingList
 
   try {
-
+    // INRUPT: 'https://storage.inrupt.com/.../'
     myReadingList = await getSolidDataset(SOLID_IDENTITY_PROVIDER, { fetch: fetch })
     console.log(myReadingList)
     let items = getThingAll(myReadingList)

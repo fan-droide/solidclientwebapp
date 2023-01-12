@@ -1,4 +1,5 @@
 //import {session} from './login.js'
+import {SOLID_IDENTITY_PROVIDER} from './config.js'
 const form = document.forms.namedItem('fileinfo')
 form.addEventListener(
     'submit',
@@ -18,7 +19,8 @@ form.addEventListener(
         const inputName = form.elements['uname']
         const inputPass = form.elements['psw']
         
-        const first_response = await fetch('http://localhost:3000/idp/credentials/', {
+        // ONLY FOR LOCALHOST APPARENTLY
+        const first_response = await fetch(SOLID_IDENTITY_PROVIDER+'idp/credentials/', {       
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             // The email/password fields are those of your account.
