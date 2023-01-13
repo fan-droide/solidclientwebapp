@@ -1,5 +1,5 @@
 //import {session} from './login.js'
-import {SOLID_IDENTITY_PROVIDER} from './config.js'
+import {SOLID_IDENTITY_PROVIDER, RESOURCE} from './config.js'
 const form = document.forms.namedItem('fileinfo')
 form.addEventListener(
     'submit',
