@@ -1,5 +1,5 @@
 /* SOURCE: https://solidproject.org/developers/tutorials/first-app */
-import { Session, onSessionRestore } from '@inrupt/solid-client-authn-browser'
+import { Session, getDefaultSession, onSessionRestore } from '@inrupt/solid-client-authn-browser'
 
 // If your Pod is *not* on `solidcommunity.net`, change this to your identity provider.
 const SOLID_IDENTITY_PROVIDER = 'https://solidcommunity.net'
@@ -7,7 +7,8 @@ document.getElementById(
     'solid_identity_provider'
 ).innerHTML = `[<a target='_blank' href='${SOLID_IDENTITY_PROVIDER}'>${SOLID_IDENTITY_PROVIDER}</a>]`
 
-const session =  new Session()
+//const session =  new Session()
+const session = getDefaultSession()
 
 const buttonLogin = document.getElementById('btnLogin')
 buttonLogin.onclick = function () {
@@ -31,8 +32,7 @@ async function handleRedirectAfterLogin() {
     await session.handleIncomingRedirect({
         restorePreviousSession: true
       })
-    if (session.info.isLoggedIn) { 
-        console.log(session)      
+    if (session.info.isLoggedIn) {        
         // Update the page with the status.
         document.getElementById(
             'labelStatus'
@@ -41,6 +41,12 @@ async function handleRedirectAfterLogin() {
     }
 }
 
+onSessionRestore(async (url)=>{
+    const theSessionInfo = await session.clientAuthentication.getSessionInfo(session.info.sessionId)
+    console.log(theSessionInfo)
+    const link2Page = document.getElementById('linkToPage')
+    link2Page.href += '?sessionId=' + session.info.sessionId   
+})
 // The example has the login redirect back to the index.html.
 // This calls the function to process login information.
 // If the function is called when not part of the login redirect, the function is a no-op.

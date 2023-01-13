@@ -1,10 +1,14 @@
-import { getDefaultSession} from "@inrupt/solid-client-authn-browser"
+import { Session, getDefaultSession} from "@inrupt/solid-client-authn-browser"
 
 async function init() {
-
-    //const theSession = await session.clientAuthentication.validateCurrentSession(sessionParam)   
-    const session = getDefaultSession()
-    console.log(session)    
+       
+    const session = getDefaultSession()    
+    const searchParams = new URLSearchParams(document.location.search)
+    const sessionParam = searchParams.get('sessionId')
+    const theSessionInfo = await session.clientAuthentication.validateCurrentSession(sessionParam)
+    const newsession = new Session(session, sessionParam)
+    console.log(newsession)    
+    console.log(theSessionInfo)
     if (session.info.isLoggedIn) {       
         // Update the page with the status.
         document.getElementById(
