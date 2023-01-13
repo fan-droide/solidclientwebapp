@@ -36,6 +36,8 @@ form.addEventListener(
         formData.append('folder', 'newfolder')
         formData.append('clientId', id)
         formData.append('clientSecret', secret)
+        formData.append('issuer', SOLID_IDENTITY_PROVIDER)
+        formData.append('resource', RESOURCE)
         const request = new XMLHttpRequest()
         request.open('POST', 'http://127.0.0.1:7000/upload-file', true)
         request.onload = (progress) => {
