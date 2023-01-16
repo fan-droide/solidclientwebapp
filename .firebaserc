@@ -1,5 +1,9 @@
 {
   "projects": {
-    "default": "solidwebapp-7a3cf"
-  }
+    "default": "solidwebapp-7a3cf",
+    "staging-session-pages": "solidwebapp-7a3cf",
+    "staging-upload-credentials": "solidwebapp-7a3cf"
+  },
+  "targets": {},
+  "etags": {}
 }
