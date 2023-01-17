@@ -14,9 +14,17 @@ const buttonLogin = document.getElementById('btnLogin')
 // 1a. Start Login Process. Call session.login() function.
 async function login() {
     if (!session.info.isLoggedIn) {
+        // For other login() options:
+        // https://docs.inrupt.com/developer-tools/api/javascript/solid-client-authn-browser/interfaces/ILoginInputOptions.html
+        // await session.login({
+        //     oidcIssuer: SOLID_IDENTITY_PROVIDER,
+        //     clientName: 'Inrupt tutorial client app',
+        //     redirectUrl: window.location.href
+        // })
+        // Use Client ID: https://solidproject.org/TR/oidc#clientids-document
         await session.login({
             oidcIssuer: SOLID_IDENTITY_PROVIDER,
-            clientName: 'Inrupt tutorial client app',
+            clientId: 'http://localhost:1234/myappid.jsonld',
             redirectUrl: window.location.href
         })
     }

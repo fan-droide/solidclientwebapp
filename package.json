@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npx parcel src/index.html src/detailview.html --no-cache",    
+    "start": "npx parcel src/index.html src/detailview.html src/terms.html src/policy.html src/myappid.jsonld src/logo.png --no-cache",    
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
