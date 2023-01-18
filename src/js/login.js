@@ -20,7 +20,7 @@ const buttonLogin = document.getElementById('btnLogin')
 
 // 1a. Start Login Process. Call session.login() function.
 async function login() {
-    if (!session.info.isLoggedIn) {
+    if (!session.info.isLoggedIn && ISSUER) {
         // For other login() options:
         // https://docs.inrupt.com/developer-tools/api/javascript/solid-client-authn-browser/interfaces/ILoginInputOptions.html
         // await session.login({
