@@ -1,13 +1,20 @@
 /* SOURCE: https://solidproject.org/developers/tutorials/first-app */
-import {SOLID_IDENTITY_PROVIDER} from './config.js'
 import { Session, getDefaultSession, onSessionRestore } from '@inrupt/solid-client-authn-browser'
 
+const PROVIDER_INPUT = document.getElementById('solid_identity_provider')
+let ISSUER = PROVIDER_INPUT.value
+
+PROVIDER_INPUT.addEventListener('change', updateValue);
+
+function updateValue(e) {    
+    ISSUER = e.target.value;
+}
 // If your Pod is *not* on `solidcommunity.net`, change this to your identity provider.
 document.getElementById(
     'solid_identity_provider'
-).innerHTML = `[<a target='_blank' href='${SOLID_IDENTITY_PROVIDER}'>${SOLID_IDENTITY_PROVIDER}</a>]`
+).innerHTML = `[<a target='_blank' href='${ISSUER}'>${ISSUER}</a>]`
 
-const session =  new Session()
+const session = getDefaultSession()
 
 const buttonLogin = document.getElementById('btnLogin')
 
@@ -17,13 +24,13 @@ async function login() {
         // For other login() options:
         // https://docs.inrupt.com/developer-tools/api/javascript/solid-client-authn-browser/interfaces/ILoginInputOptions.html
         // await session.login({
-        //     oidcIssuer: SOLID_IDENTITY_PROVIDER,
+        //     oidcIssuer: ISSUER,
         //     clientName: 'Inrupt tutorial client app',
         //     redirectUrl: window.location.href
         // })
         // Use Client ID: https://solidproject.org/TR/oidc#clientids-document
         await session.login({
-            oidcIssuer: SOLID_IDENTITY_PROVIDER,
+            oidcIssuer: ISSUER,
             clientId: 'http://localhost:1234/myappid.jsonld',
             redirectUrl: window.location.href
         })
@@ -34,7 +41,7 @@ async function login() {
 // When redirected after login, finish the process by retrieving session information.
 async function handleRedirectAfterLogin() {    
     await session.handleIncomingRedirect({
-        restorePreviousSession: false
+        restorePreviousSession: true
       })
     if (session.info.isLoggedIn) {       
         // Update the page with the status.

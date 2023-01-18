@@ -1,5 +1,7 @@
 /* https://docs.inrupt.com/developer-tools/javascript/client-libraries/tutorial/getting-started/ */
-import {SOLID_IDENTITY_PROVIDER} from './config.js'
+//import {SOLID_IDENTITY_PROVIDER} from './config.js'
+import { getDefaultSession, onSessionRestore } from '@inrupt/solid-client-authn-browser'
+
 import {
   getSolidDataset,
   getThing,
@@ -10,12 +12,18 @@ import {
 import { fetch } from "@inrupt/solid-client-authn-browser"
 import { SCHEMA_INRUPT, RDF, AS } from "@inrupt/vocab-common-rdf"
 
-async function init() {
+const session = getDefaultSession()
+
+async function init() { 
+  
+  const webId = session.info.webId
+  const address = webId.split('/')
+  const issuer = address[0] + '//' + address[1] + '/' + address[2]  
   let myReadingList
 
   try {
     // INRUPT: 'https://storage.inrupt.com/.../'
-    myReadingList = await getSolidDataset(SOLID_IDENTITY_PROVIDER, { fetch: fetch })
+    myReadingList = await getSolidDataset(issuer, { fetch: fetch })
     console.log(myReadingList)
     let items = getThingAll(myReadingList)
 
@@ -60,4 +68,6 @@ function paintList(listcontent) {
   }
 }
 
-init()
+onSessionRestore((url)=>{    
+  init()
+})

@@ -24,7 +24,7 @@ async function init() {
 
     try {
 
-        myReadingList = await getSolidDataset(SOLID_IDENTITY_PROVIDER + "/" + thePath + "/", { fetch: session.fetch })
+        myReadingList = await getSolidDataset(SOLID_IDENTITY_PROVIDER + thePath + "/", { fetch: session.fetch })
 
         let items = getContainedResourceUrlAll(myReadingList, { fetch: session.fetch })
 
